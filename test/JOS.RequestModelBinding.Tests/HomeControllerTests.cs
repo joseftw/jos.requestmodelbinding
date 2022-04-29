@@ -37,7 +37,7 @@ public class HomeControllerTests : IClassFixture<WebApplicationFactory<Startup>>
         var client = _webApplicationFactory.CreateClient();
 
         var response = await client.SendAsync(request);
-        var s = await response.Content.ReadAsStringAsync();
+
         response.StatusCode.ShouldBe(HttpStatusCode.OK);
         var responseStream = await response.Content.ReadAsStreamAsync();
         var responseBody = await JsonSerializer.DeserializeAsync<PostRequest>(
